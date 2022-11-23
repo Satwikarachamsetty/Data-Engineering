@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<math.h>
+#define n 18
+int main()
+{
+    int i,j;
+    float sum_xy=0,sum_x=0,sum_y=0,sum_y2=0,sum_x2=0,mx,my,sigmax,sigmay,covxy,r;
+    /*printf("Enter the value of n=");
+    scanf("%d",&n);
+    printf("enter x values:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d ,",&x[i]);
+    }
+    printf("enter y values:\n");
+    for(i=0;i<n;i++)
+    {
+        scanf("%f ,",&y[i]);
+    }*/
+    int x[100]={23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61};
+    int y[100]={9.5,26.5,7.8,17.8,31.4,25.9,27.4,27.2,31.2,34.6,42.5,28.8,33.4,30.2,34.1,32.9,41.2,35.7};
+
+    for(i=0;i<n;i++)
+    {
+        sum_x+=x[i];
+        sum_y+=y[i];
+        sum_x2+=(x[i]*x[i]);
+        sum_y2+=(y[i]*y[i]);
+        sum_xy+=(x[i]*y[i]);
+    }
+    mx=sum_x/n;
+    my=sum_y/n;
+    sigmax=sqrt((sum_x2/n)-(mx*mx));
+    sigmay=sqrt((sum_y2/n)-(my*my));
+    covxy=((sum_xy/n)-(mx*my));
+    r=covxy/(sigmax*sigmay);
+    printf("correlation coefficient=%f\n",r);
+    
+    
+}
+
+---------------o/p-------------
+correlation coefficient=0.817718
