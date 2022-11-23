@@ -187,5 +187,44 @@ boxplot(arr);
 
 -------------------------------------------------output----------------------------------------------------------------------
 
+mean=29
+median=25
+demo elements
+1 1 2 1 1 2 1 1 2 1 4 3 2 1 1 2 1 3 2 1 1 1 1 1 1 
+element 13 is unimode
+element 15 is unimode
+element 16 is bimode
+element 16 is unimode
+element 19 is unimode
+element 20 is bimode
+element 20 is unimode
+element 21 is unimode
+element 22 is bimode
+element 22 is unimode
+element 25 is multimode
+element 25 is trimode
+element 25 is bimode
+element 25 is unimode
+element 30 is unimode
+element 33 is bimode
+element 33 is unimode
+element 35 is trimode
+element 35 is bimode
+element 35 is unimode
+element 36 is unimode
+element 40 is unimode
+element 45 is unimode
+element 52 is unimode
+element 70 is unimode
+mode=25
+mid-range=41.500000
+q1=20
+q3=35
+Box Plot
+min=13
+q1=20
+q3=35
+median=25
+max=70
 
 
