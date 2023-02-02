@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<string.h>
+//Sorting the euclidean distances using bubble sort
+int bubblesort(int euclidean[20],int n)
+{
+    int temp;
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+            if(euclidean[j]>euclidean[j+1])
+            {
+                temp=euclidean[j];
+                euclidean[j]=euclidean[j+1];
+                euclidean[j+1]=temp;
+            }
+        }
+    }
+    return euclidean[0];
+}
+// To check the min euclidean distance to find sport 
+int  check_min(int x[20],int min,int n)
+{
+    int p;
+    for(int i=0;i<n;i++)
+    {
+        if(min==x[i])
+        {
+            p=i;
+        }
+    }
+    return p;
+}
+int main()
+{
+    //Declarations
+    int n;
+    int x[20],euclidean[20],min,result;
+    int ip_age,ip_gender;
+    char ip_name[20];
+    //Inputs
+    printf("Enter no of elements:");
+    scanf("%d",&n);
+    printf("Enter input details:\n");
+    scanf("%s%d%d",ip_name,&ip_age,&ip_gender);
+    //struct declaration
+    struct index{
+        char name[20];
+        int age;
+        int gender;
+        char sport[20];
+    };
+    struct index arr[10];
+    printf("Enter Data:\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s%d%d%s",arr[i].name,&arr[i].age,&arr[i].gender,arr[i].sport);
+    }
+    //Euclidean distances from ip_age to age and from ip_gender to gender
+    for(int i=0;i<n;i++)
+    {
+        euclidean[i]=sqrt(((ip_age-arr[i].age)*(ip_age-arr[i].age))+((ip_gender-arr[i].gender)*(ip_gender-arr[i].gender)));
+        x[i]=sqrt(((ip_age-arr[i].age)*(ip_age-arr[i].age))+((ip_gender-arr[i].gender)*(ip_gender-arr[i].gender)));
+    }
+    min=bubblesort(euclidean,n);
+    result=check_min(x,min,n);
+    printf("The Sport is:");
+    printf("%s",arr[result].sport); 
+}
