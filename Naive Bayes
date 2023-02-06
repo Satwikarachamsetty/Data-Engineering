@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+    int n;
+    printf("Enter no of values:");
+    scanf("%d",&n);
+    struct index{
+        char outlook[20];
+        char temp[20];
+        char humidity[20];
+        char wind[20];
+        char label[20];
+    };
+    struct index arr[15];
+    float cy=0,cn=0;
+    printf("Enter elements:\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s%s%s%s%s",arr[i].outlook,arr[i].temp,arr[i].humidity,arr[i].wind,arr[i].label);
+    }
+    for(int i=0;i<n;i++)
+    {
+        if(strcmp(arr[i].label,"yes")==0)
+        {
+            cy++;
+        }
+        else
+        {
+            cn++;
+        }
+    }
+    float cty=0,ctn=0,chy=0,chn=0,cwy=0,cwn=0,coy=0,con=0;
+    for(int i=0;i<n;i++)
+    {
+        if((strcmp(arr[i].outlook,"sunny")==0) && (strcmp(arr[i].label,"yes")==0))
+        {
+            coy++;
+        }
+        if((strcmp(arr[i].temp,"cool")==0) && (strcmp(arr[i].label,"yes")==0))
+        {
+            cty++;
+        }
+        if((strcmp(arr[i].wind,"strong")==0) && (strcmp(arr[i].label,"yes")==0))
+        {
+            cwy++;
+        }
+        if((strcmp(arr[i].humidity,"high")==0) && (strcmp(arr[i].label,"yes")==0))
+        {
+            chy++;
+        }
+    }
+    float py=((cty/cy)*(chy/cy)*(cwy/cy)*(coy/cy)*(cy/n));
+    printf("Probability: %f",py);
+}
+
+Output=======================================================================================================================
+
+Enter no of values:14
+Enter elements:
+sunny hot high weak no
+sunny hot high strong no
+overcast hot high weak yes
+rain mild high weak yes
+rain cool normal weak yes
+rain cool normal stri ong no
+overcast cool normal strong yes
+sunny mild high weak no
+sunny cool normal weak yes
+rain mild normal weak yes
+sunny mild normal strong yes
+overcast mild high strong yes
+overcast hot normal e weak yes
+rain mild high strong no
+Probability: 0.005291
