@@ -1,0 +1,129 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+    int n;
+    printf("Enter no of values:");
+    scanf("%d",&n);
+    struct index{
+        char dept[20];
+        char status[20];
+        char age[20];
+        char salary[20];
+        int count;
+    };
+    struct index arr[15];
+    char tdept[20],tage[20],tsal[50];
+    printf("Enter elements:\n");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s%s%s%s%d",arr[i].dept,arr[i].status,arr[i].age,arr[i].salary,&arr[i].count);
+    }
+    float cy=0,cn=0;
+    for(int i=0;i<n;i++)
+    {
+        if(strcmp(arr[i].status,"senior")==0)
+        {
+            cy+=arr[i].count;
+        }
+        else
+        {
+            cn+=arr[i].count;
+        }
+    }
+    float cdy=0,cdn=0,cay=0,can=0,csy=0,csn=0;
+    for(int i=0;i<n;i++)
+    {
+        if((strcmp(arr[i].dept,"systems")==0) && (strcmp(arr[i].status,"senior")==0))
+        {
+            cdy+=arr[i].count;
+        }
+        else if((strcmp(arr[i].dept,"systems")==0) && (strcmp(arr[i].status,"junior")==0))
+        {
+            cdn+=arr[i].count;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        if((strcmp(arr[i].age,"26...30")==0) && (strcmp(arr[i].status,"senior")==0))
+        {
+            cay+=arr[i].count;
+        }
+        else if((strcmp(arr[i].age,"26...30")==0) && (strcmp(arr[i].status,"junior")==0))
+        {
+            can+=arr[i].count;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        if((strcmp(arr[i].salary,"46-50k")==0) && (strcmp(arr[i].status,"senior")==0))
+        {
+            csy+=arr[i].count;
+        }
+        else if((strcmp(arr[i].salary,"46-50k")==0) && (strcmp(arr[i].status,"junior")==0))
+        {
+            csn+=arr[i].count;
+        }
+    }
+    float py=cy/(cy+cn),pn=cn/(cy+cn);
+    if(cdy==0 || cdn==0)
+    {
+        cdy=(cdy+1)/(cy+4);
+        cdn=(cdn+1)/(cn+4);
+    }
+    else
+    {
+        cdy=cdy/cy;
+        cdn=cdn/cn;
+    }
+    if(csy==0 || csn==0)
+    {
+        csy=(csy+1)/(cy+6);
+        csn=(csn+1)/(cn+6);
+    }
+    else
+    {
+        csy=csy/cy;
+        csn=csn/cn;
+    }
+    if(cay==0 || can==0)
+    {
+        cay=(cay+1)/(cy+6);
+        can=(can+1)/(cn+6);
+    }
+    else
+    {
+        cay=cay/cy;
+        can=can/cn;
+    }
+    float xcy=cdy*csy*cay,xcn=cdn*can*csn;
+    float r1=xcy*py,r2=xcn*pn;
+    printf("Probability r1: %f",r1);
+    printf("Probability r2: %f",r2);
+    if(r1>r2)
+    {
+        printf("S");
+    }
+    else
+    {
+        printf("J");
+    }
+}
+op=======================================================================
+Enter no of values:11
+Enter elements:
+sales senior 30...35 46-50k 30
+sales junior 26...30 26-30k 40
+sales junior 31...35 31-35k 40
+systems junior 21....25 46-50k 20
+systems senior 31...35 66-70k 5
+systems junior 26...30 46-50k 3
+systems senior 41...45 66-70k 3
+marketing senior 41...45 36...40 46-50k 10
+marketing junior 31....35 41-45k 4
+secretary senior 46...50 36-40k 4
+secretary junior 26...30 26-30k 6
+Probability r1: 0.000643
+Probability r2: 0.011921
+Junior
