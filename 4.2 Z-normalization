@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+void main()
+{
+    int n,a[10],sum_x=0,sum_x2=0,mx,r,sigmax;
+    printf("enter n:");
+    scanf("%d\n",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        sum_x=sum_x+a[i];
+        sum_x2=sum_x2+(a[i]*a[i]);
+    }
+    mx=sum_x/n;
+    sigmax=sqrt((sum_x2/n)-(mx*mx));
+    for(int i=0;i<n;i++)
+    {
+        a[i]=(a[i]-(mx))/sigmax;
+        printf("%d, ",a[i]);
+    }
+}
+op==============================================
+enter n:5
+200 300 400 600 1000
+-1, 0, 0, 0, 1, 
