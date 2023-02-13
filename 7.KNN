@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#include<limits.h>
+struct info{
+    int height;
+    int weight;
+    char size[10];
+};
+void main()
+{
+    int n,min=INT_MAX,ih,iw,temp,index;
+    printf("Enter n:");
+    scanf("%d",&n);
+    struct info arr[n];
+    printf("Enter h,w,s:");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d%d%s",&arr[i].height,&arr[i].weight,arr[i].size);
+    }
+    printf("Enter i/p h,w,size:");
+    scanf("%d%d",&ih,&iw);
+    for(int i=0;i<n;i++)
+    {
+        temp=sqrt(pow(ih-arr[i].h,2)+pow(iw-arr[i].w,2));
+        if(temp<min)
+        {
+            min=temp;
+            index=i;
+        }
+    }
+    printf("%s",arr[index].size);
+}
+O/P=====================================================================================================
+Enter n:18
+Enter h,w,s:
+158 58 M
+159 59 M
+158 63 M
+160 59 M
+160 60 M
+163 60 M
+163 61 M
+160 64 L
+163 64 L
+165 61 L
+165 62 L
+165 65 L
+168 62 L
+168 63 L
+168 63 L
+170 63 L
+170 64 L
+170 68 L
+Enter i/p h,w,size:161 61
+M
